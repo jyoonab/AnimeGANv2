@@ -1,6 +1,6 @@
 import tensorflow as tf
 from tensorflow.contrib import slim
-from tools.adjust_brightness import adjust_brightness_from_src_to_dst, read_img
+from adjust_brightness import adjust_brightness_from_src_to_dst, read_img
 import os,cv2
 import numpy as np
 
@@ -39,8 +39,8 @@ def save_images(images, image_path, photo_path = None):
 
 def inverse_transform(images):
     images = (images + 1.) / 2 * 255
-    # The calculation of floating-point numbers is inaccurate, 
-    # and the range of pixel values must be limited to the boundary, 
+    # The calculation of floating-point numbers is inaccurate,
+    # and the range of pixel values must be limited to the boundary,
     # otherwise, image distortion or artifacts will appear during display.
     images = np.clip(images, 0, 255)
     return images.astype(np.uint8)
@@ -59,7 +59,7 @@ def random_crop(img1, img2, crop_H, crop_W):
     # The crop width cannot exceed the original image crop width
     if crop_W > w:
         crop_W = w
-    
+
     # Crop height
     if crop_H > h:
         crop_H = h
@@ -88,5 +88,3 @@ def check_folder(log_dir):
 
 def str2bool(x):
     return x.lower() in ('true')
-
-
