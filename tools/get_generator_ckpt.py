@@ -9,7 +9,7 @@ def parse_args():
     desc = "AnimeGANv2"
     parser = argparse.ArgumentParser(description=desc)
 
-    parser.add_argument('--checkpoint_dir', type=str, default='../checkpoint/' + 'AnimeGANv2_Hayao_lsgan_300_300_1_2_10_1_lite',
+    parser.add_argument('--checkpoint_dir', type=str, default='/content/AnimeGANv2/checkpoint' + 'AnimeGANv2_Hayao_lsgan_300_300_1_2_10_1_lite',
                         help='Directory name to save the checkpoints')
     parser.add_argument('--style_name', type=str, default='Hayao',
                         help='what style you want to get')
@@ -24,9 +24,9 @@ def save(saver, sess, checkpoint_dir, model_name):
 
 def main(checkpoint_dir, style_name):
     if 'lite' in checkpoint_dir:
-        ckpt_dir = '../checkpoint/' + 'generator_' + style_name + '_weight_lite'
+        ckpt_dir = '/content/drive/MyDrive/AnimeGANv2/ckpt/' + 'generator_' + style_name + '_weight_lite'
     else:
-        ckpt_dir = '../checkpoint/' + 'generator_' + style_name + '_weight'
+        ckpt_dir = '/content/drive/MyDrive/AnimeGANv2/ckpt/' + 'generator_' + style_name + '_weight'
     check_folder(ckpt_dir)
 
     placeholder = tf.placeholder(tf.float32, [1, None, None, 3], name='generator_input')
